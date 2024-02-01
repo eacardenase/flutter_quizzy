@@ -4,11 +4,20 @@ import 'package:quizzy/screens/home_screen.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.deepPurple,
-        body: HomeScreen(),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [Colors.cyan.shade600, Colors.cyan.shade200],
+            ),
+          ),
+          child: const HomeScreen(),
+        ),
       ),
     ),
   );

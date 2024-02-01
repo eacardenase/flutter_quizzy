@@ -11,22 +11,14 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  _QuizState(); // the constructor function its optional here, dart already provides it
+  // _QuizState(); // the constructor function its optional here, dart already provides it
 
-  Widget? activeScreen;
+  var activeScreen = "home-screen";
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = "questions-screen";
     });
-  }
-
-  @override
-  void initState() {
-    super.initState(); // generally the first statement
-
-    // lifting state
-    activeScreen = HomeScreen(onPressed: switchScreen);
   }
 
   @override
@@ -42,7 +34,9 @@ class _QuizState extends State<Quiz> {
               colors: [Colors.cyan.shade600, Colors.cyan.shade200],
             ),
           ),
-          child: activeScreen,
+          child: activeScreen == "home-screen"
+              ? HomeScreen(onPressed: switchScreen)
+              : const QuestionsScreen(),
         ),
       ),
     );

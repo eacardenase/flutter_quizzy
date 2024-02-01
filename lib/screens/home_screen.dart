@@ -31,7 +31,9 @@ class HomeScreen extends StatelessWidget {
             height: 30,
           ),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              // ...
+            },
             icon: const Icon(
               Icons.arrow_right_alt,
             ),

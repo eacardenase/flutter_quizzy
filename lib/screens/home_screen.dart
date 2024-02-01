@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+    required this.onPressed,
+  });
+
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +36,7 @@ class HomeScreen extends StatelessWidget {
             height: 30,
           ),
           OutlinedButton.icon(
-            onPressed: () {
-              // ...
-            },
+            onPressed: onPressed,
             icon: const Icon(
               Icons.arrow_right_alt,
             ),

@@ -13,7 +13,9 @@ class HomeScreen extends StatelessWidget {
           Image.asset(
             "assets/images/quiz-logo.png",
             width: 300,
-            color: Colors.cyan.shade50,
+            opacity: const AlwaysStoppedAnimation(
+              0.5,
+            ),
           ),
           const SizedBox(
             height: 80,

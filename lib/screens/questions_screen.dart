@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzy/widgets/option_button.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -17,31 +18,28 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         children: [
           const Text(
             "The Question",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              "Option 1",
-            ),
+          OptionButton(
+            label: "Option 1",
+            handler: () {},
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              "Option 2",
-            ),
+          OptionButton(
+            label: "Option 1",
+            handler: () {},
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              "Option 3",
-            ),
+          OptionButton(
+            label: "Option 1",
+            handler: () {},
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text(
-              "Option 4",
-            ),
+          OptionButton(
+            label: "Option 1",
+            handler: () {},
           ),
         ],
       ),

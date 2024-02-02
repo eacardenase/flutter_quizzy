@@ -32,12 +32,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.options.map(
-              (option) => OptionButton(
-                label: option,
-                handler: () {},
-              ),
-            ),
+            ...currentQuestion.getShuffledOptions().map(
+                  (option) => OptionButton(
+                    label: option,
+                    handler: () {},
+                  ),
+                ),
           ],
         ),
       ),

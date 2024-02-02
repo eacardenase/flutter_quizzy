@@ -6,4 +6,12 @@ class QuizQuestion {
 
   final String text;
   final List<String> options;
+
+  List<String> getShuffledOptions() {
+    final optionsCopy = List.of(options);
+
+    optionsCopy.shuffle();
+
+    return optionsCopy;
+  }
 }

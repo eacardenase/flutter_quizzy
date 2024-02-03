@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:google_fonts/google_fonts.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
@@ -27,9 +29,10 @@ class HomeScreen extends StatelessWidget {
           ),
           Text(
             "Learn Flutter the fun way!",
-            style: TextStyle(
-              fontSize: 20,
+            style: GoogleFonts.lato(
+              fontSize: 24,
               color: Colors.cyan.shade50,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(

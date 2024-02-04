@@ -19,13 +19,15 @@ class QuestionsSummary extends StatelessWidget {
               Text(
                 "${(summary['questionIndex'] as int) + 1}",
               ),
-              Column(
-                children: [
-                  Text(summary["question"] as String),
-                  const SizedBox(height: 5),
-                  Text(summary["selectedAnswer"] as String),
-                  Text(summary["correctAnswer"] as String)
-                ],
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(summary["question"] as String),
+                    const SizedBox(height: 5),
+                    Text(summary["selectedAnswer"] as String),
+                    Text(summary["correctAnswer"] as String)
+                  ],
+                ),
               )
             ],
           );

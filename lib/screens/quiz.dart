@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizzy/data/questions.dart';
 
+import 'package:quizzy/data/questions.dart';
 import 'package:quizzy/screens/home_screen.dart';
 import 'package:quizzy/screens/questions_screen.dart';
 import 'package:quizzy/screens/results_screen.dart';
@@ -15,7 +15,7 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   // _QuizState(); // the constructor function its optional here, dart already provides it
 
-  List<String> selectedAnswers = [];
+  final List<String> selectedAnswers = [];
   var activeScreen = "home-screen";
 
   void switchScreen() {
@@ -28,8 +28,6 @@ class _QuizState extends State<Quiz> {
     selectedAnswers.add(answer);
 
     if (selectedAnswers.length == questions.length) {
-      selectedAnswers.clear();
-
       setState(() {
         activeScreen = "results-screen";
       });
@@ -42,8 +40,12 @@ class _QuizState extends State<Quiz> {
 
     if (activeScreen == "questions-screen") {
       screenWidget = QuestionsScreen(onSelectAnswer: selectAnswer);
-    } else if (activeScreen == "results-screen") {
-      screenWidget = const ResultsScreen();
+    }
+
+    if (activeScreen == "results-screen") {
+      screenWidget = ResultsScreen(
+        selectedAnswers: selectedAnswers,
+      );
     }
 
     return MaterialApp(

@@ -4,11 +4,11 @@ class OptionButton extends StatelessWidget {
   const OptionButton({
     super.key,
     required this.label,
-    required this.handler,
+    required this.onPressed,
   });
 
   final String label;
-  final void Function() handler;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class OptionButton extends StatelessWidget {
         bottom: 8,
       ),
       child: ElevatedButton(
-        onPressed: handler,
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(
             horizontal: 40,

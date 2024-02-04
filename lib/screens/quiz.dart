@@ -13,6 +13,7 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   // _QuizState(); // the constructor function its optional here, dart already provides it
 
+  final List<String> selectedAnswers = [];
   var activeScreen = "home-screen";
 
   void switchScreen() {
@@ -21,12 +22,16 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void selectAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = HomeScreen(onPressed: switchScreen);
 
     if (activeScreen == "questions-screen") {
-      screenWidget = const QuestionsScreen();
+      screenWidget = QuestionsScreen(onSelectAnswer: selectAnswer);
     }
 
     return MaterialApp(

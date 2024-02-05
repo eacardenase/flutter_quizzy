@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:quizzy/data/questions.dart';
 import 'package:quizzy/widgets/questions_summary.dart';
 
@@ -7,9 +9,11 @@ class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
     super.key,
     required this.selectedAnswers,
+    required this.onQuizRestart,
   });
 
   final List<String> selectedAnswers;
+  final void Function() onQuizRestart;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -33,7 +37,7 @@ class ResultsScreen extends StatelessWidget {
     final summaryData = getSummaryData();
     final numOfTotalQuestions = questions.length;
     final numOfCorrectAnsweredQuestions = summaryData.where((summary) {
-      return summary["correctAnswer"] == summary["correctAnswer"];
+      return summary["correctAnswer"] == summary["selectedAnswer"];
     }).length;
 
     return SizedBox(
@@ -44,15 +48,24 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'You answered $numOfCorrectAnsweredQuestions out of $numOfTotalQuestions questions correctly.',
+              'You answered $numOfCorrectAnsweredQuestions out of $numOfTotalQuestions questions correctly!',
+              style: GoogleFonts.lato(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.cyan.shade50,
+              ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
             QuestionsSummary(summaryData: summaryData),
             const SizedBox(height: 30),
             TextButton.icon(
               icon: const Icon(Icons.replay),
-              onPressed: () {},
+              onPressed: onQuizRestart,
               label: const Text("Restart  quiz."),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.cyan.shade50,
+              ),
             ),
           ],
         ),

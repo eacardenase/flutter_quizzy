@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:quizzy/widgets/summary_item.dart';
+
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary({
     super.key,
@@ -16,24 +18,7 @@ class QuestionsSummary extends StatelessWidget {
         child: Column(
           children: summaryData.map(
             (summary) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "${(summary['questionIndex'] as int) + 1}",
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(summary["question"] as String),
-                        const SizedBox(height: 5),
-                        Text(summary["selectedAnswer"] as String),
-                        Text(summary["correctAnswer"] as String)
-                      ],
-                    ),
-                  )
-                ],
-              );
+              return SummaryItem(itemData: summary);
             },
           ).toList(),
         ),

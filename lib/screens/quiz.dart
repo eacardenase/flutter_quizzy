@@ -34,18 +34,25 @@ class _QuizState extends State<Quiz> {
     }
   }
 
+  void restartQuiz() {
+    selectedAnswers.clear();
+
+    setState(() {
+      activeScreen = "home-screen";
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = HomeScreen(onPressed: switchScreen);
 
     if (activeScreen == "questions-screen") {
       screenWidget = QuestionsScreen(onSelectAnswer: selectAnswer);
-    }
-
-    if (activeScreen == "results-screen") {
+    } else if (activeScreen == "results-screen") {
       screenWidget = ResultsScreen(
-        selectedAnswers: selectedAnswers,
-      );
+          selectedAnswers: selectedAnswers, onQuizRestart: restartQuiz);
+    } else {
+      screenWidget = HomeScreen(onPressed: switchScreen);
     }
 
     return MaterialApp(
@@ -56,7 +63,7 @@ class _QuizState extends State<Quiz> {
             gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
-              colors: [Colors.cyan.shade600, Colors.cyan.shade200],
+              colors: [Colors.cyan.shade400, Colors.cyan.shade200],
             ),
           ),
           child: screenWidget,

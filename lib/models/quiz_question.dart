@@ -7,7 +7,7 @@ class QuizQuestion {
   final String text;
   final List<String> options;
 
-  List<String> getShuffledOptions() {
+  List<String> get shuffledOptions {
     final optionsCopy = List.of(options);
 
     optionsCopy.shuffle();

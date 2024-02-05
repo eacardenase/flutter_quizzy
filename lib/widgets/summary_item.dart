@@ -15,7 +15,7 @@ class SummaryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCorrectedAnswer = questionSummary.isSelectedAnswerCorrect();
+    final isCorrectedAnswer = questionSummary.isSelectedAnswerCorrect;
 
     return Padding(
       padding: const EdgeInsets.symmetric(

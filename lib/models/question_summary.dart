@@ -11,7 +11,7 @@ class QuestionSummary {
   final String correctAnswer;
   final String selectedAnswer;
 
-  bool isSelectedAnswerCorrect() {
+  bool get isSelectedAnswerCorrect {
     return correctAnswer == selectedAnswer;
   }
 }

@@ -52,12 +52,12 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.getShuffledOptions().map(
-                  (option) => OptionButton(
-                    label: option,
-                    onPressed: () => answerQuestion(option),
-                  ),
-                ),
+            ...currentQuestion.shuffledOptions.map(
+              (option) => OptionButton(
+                label: option,
+                onPressed: () => answerQuestion(option),
+              ),
+            ),
           ],
         ),
       ),

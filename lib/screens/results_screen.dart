@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:quizzy/data/questions.dart';
+import 'package:quizzy/models/question_summary.dart';
 import 'package:quizzy/widgets/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -15,18 +16,18 @@ class ResultsScreen extends StatelessWidget {
   final List<String> selectedAnswers;
   final void Function() onQuizRestart;
 
-  List<Map<String, Object>> getSummaryData() {
-    final List<Map<String, Object>> summary = [];
+  List<QuestionSummary> getSummaryData() {
+    final List<QuestionSummary> summary = [];
 
     for (var i = 0; i < selectedAnswers.length; i++) {
       final currentQuestion = questions[i];
+      final questionSummary = QuestionSummary(
+          questionIndex: i,
+          questionTitle: currentQuestion.text,
+          correctAnswer: currentQuestion.options[0],
+          selectedAnswer: selectedAnswers[i]);
 
-      summary.add({
-        "questionIndex": i,
-        "question": currentQuestion.text,
-        "correctAnswer": currentQuestion.options[0],
-        "selectedAnswer": selectedAnswers[i],
-      });
+      summary.add(questionSummary);
     }
 
     return summary;
@@ -37,7 +38,7 @@ class ResultsScreen extends StatelessWidget {
     final summaryData = getSummaryData();
     final numOfTotalQuestions = questions.length;
     final numOfCorrectAnsweredQuestions = summaryData.where((summary) {
-      return summary["correctAnswer"] == summary["selectedAnswer"];
+      return summary.isSelectedAnswerCorrect();
     }).length;
 
     return SizedBox(

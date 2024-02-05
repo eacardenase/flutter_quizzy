@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:quizzy/models/question_summary.dart';
 import 'package:quizzy/widgets/summary_item.dart';
 
 class QuestionsSummary extends StatelessWidget {
@@ -8,7 +9,7 @@ class QuestionsSummary extends StatelessWidget {
     required this.summaryData,
   });
 
-  final List<Map<String, Object>> summaryData;
+  final List<QuestionSummary> summaryData;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class QuestionsSummary extends StatelessWidget {
         child: Column(
           children: summaryData.map(
             (summary) {
-              return SummaryItem(itemData: summary);
+              return SummaryItem(questionSummary: summary);
             },
           ).toList(),
         ),

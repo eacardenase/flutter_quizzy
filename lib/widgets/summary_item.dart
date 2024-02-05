@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:quizzy/models/question_summary.dart';
 import 'package:quizzy/widgets/question_identifier.dart';
 
 class SummaryItem extends StatelessWidget {
   const SummaryItem({
     super.key,
-    required this.itemData,
+    required this.questionSummary,
   });
 
-  final Map<String, Object> itemData;
+  final QuestionSummary questionSummary;
 
   @override
   Widget build(BuildContext context) {
-    final isCorrectedAnswer =
-        itemData["correctAnswer"] == itemData["selectedAnswer"];
+    final isCorrectedAnswer = questionSummary.isSelectedAnswerCorrect();
 
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -24,7 +25,7 @@ class SummaryItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           QuestionIdentifier(
-            questionIndex: itemData["questionIndex"] as int,
+            questionIndex: questionSummary.questionIndex,
             isCorrectedAnswer: isCorrectedAnswer,
           ),
           const SizedBox(width: 20),
@@ -33,7 +34,7 @@ class SummaryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  itemData["question"] as String,
+                  questionSummary.questionTitle,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -41,13 +42,13 @@ class SummaryItem extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  itemData["selectedAnswer"] as String,
+                  questionSummary.selectedAnswer,
                   style: GoogleFonts.lato(
                     color: Colors.pink.shade600,
                   ),
                 ),
                 Text(
-                  itemData["correctAnswer"] as String,
+                  questionSummary.correctAnswer,
                   style: TextStyle(
                     color: Colors.cyan.shade600,
                   ),
